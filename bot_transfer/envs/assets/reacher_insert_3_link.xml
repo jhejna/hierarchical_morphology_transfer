@@ -1,0 +1,45 @@
+<mujoco model="reacher">
+	<compiler angle="radian" inertiafromgeom="true"/>
+	<default>
+		<joint armature="1" damping="1" limited="true"/>
+		<geom friction="1 0.1 0.1" contype="0" conaffinity="0" rgba="0.7 0.7 0 1"/>
+	</default>
+	<option gravity="0 0 -9.81" integrator="RK4" timestep="0.01"/>
+	<worldbody>
+		<!-- Arena -->
+		<geom conaffinity="1" name="ground" pos="0 0 0" rgba="0.9 0.9 0.9 1" size="1 1 10" type="plane"/>
+		<geom conaffinity="1" fromto="-.3 -.18 .01 -.027 -.18 .01" name="sideL" rgba="0.9 0.4 0.6 1" size=".02" type="capsule"/>
+		<geom conaffinity="1" fromto="0.027 -.18 .01 .3 -.18 .01" name="sideR" rgba="0.9 0.4 0.6 1" size=".02" type="capsule"/>
+		<!-- Arm -->
+		<geom conaffinity="1" fromto="0 0 0 0 0 0.03" name="root" rgba="0.9 0.4 0.6 1" size=".01" type="cylinder"/>
+		<body name="body0" pos="0 0 .015">
+			<geom fromto="0 0 0 0.067 0 0" name="link0" rgba="0.0 0.4 0.6 1" size=".01" type="capsule"/>
+			<joint axis="0 0 1" limited="false" name="joint0" pos="0 0 0" type="hinge"/>
+			<body name="body1" pos="0.067 0 0">
+				<joint axis="0 0 1" limited="true" name="joint1" pos="0 0 0" range="-2.7 2.7" type="hinge"/>
+				<geom fromto="0 0 0 0.066 0 0" name="link1" rgba="0.0 0.4 0.6 1" size=".01" type="capsule"/>
+				<body name="body2" pos="0.066 0 0">
+					<joint axis="0 0 1" limited="true" name="joint2" pos="0 0 0" range="-2.7 2.7" type="hinge"/>
+					<geom fromto="0 0 0 0.066 0 0" name="link2" rgba="0.0 0.4 0.6 1" size=".01" type="capsule"/>
+					<body name="fingertip" pos="0.076 0 0">
+						<geom conaffinity="1" contype="1" name="fingertip" pos="0 0 0" rgba="0.0 0.8 0.6 1" size=".015" type="sphere"/>
+						<geom conaffinity="1" contype="1" name="pegbox" mass="0.00001" type="box" pos="0.025 0 0" size="0.025 0.005 0.005" rgba="0.0 0.8 0.6 1"/>
+						<body name="peg" pos="0.05 0 0">
+							<geom conaffinity="1" contype="1" name="pegtip" type="sphere" size="0.002"/>
+						</body>
+					</body>
+				</body>
+			</body>	
+		</body>
+		
+		<body name="highlevel" pos="0.2 -0.04 0.01">
+      		<geom conaffinity="0" contype="0" name="highlevel" pos="0 0 0" rgba="0.2 0.9 0.2 1" size=".01" type="sphere"/>
+    	</body>
+
+	</worldbody>
+	<actuator>
+		<motor ctrllimited="true" ctrlrange="-0.5 0.5" gear="100.0" joint="joint0" forcelimited="true" forcerange="-0.1 0.1"/>
+		<motor ctrllimited="true" ctrlrange="-0.5 0.5" gear="100.0" joint="joint1" forcelimited="true" forcerange="-0.1 0.1"/>
+		<motor ctrllimited="true" ctrlrange="-0.5 0.5" gear="100.0" joint="joint2" forcelimited="true" forcerange="-0.1 0.1"/>
+	</actuator>
+</mujoco>
