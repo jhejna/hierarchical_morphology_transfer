@@ -1,5 +1,5 @@
 # Hierarchically Decoupled Imitation for Morphological Transfer
-Code for the paper "Hierarchically Decoupled Imitation for Morphological Transfer" by Joey Hejna, Pieter Abbeel, and Lerrel Pinto.
+Code for the paper [Hierarchically Decoupled Imitation for Morphological Transfer](https://arxiv.org/abs/2003.01709) by Donald (Joey) Hejna, Pieter Abbeel, and Lerrel Pinto.
 
 ## Setup
 
