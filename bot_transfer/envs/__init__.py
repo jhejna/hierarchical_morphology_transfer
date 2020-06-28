@@ -7,7 +7,6 @@ from .hierarchical import JointOPEnv as JointOP
 from .hierarchical import DiscriminatorEnv as Discriminator
 from .hierarchical import FullEnv as Full
 from .hierarchical import LowFinetuneEnv as LowFinetune
-from .hierarchical import LowLevelHerEnv as HERLow
 
 # Add the environments
 from .point_mass import *
@@ -18,5 +17,3 @@ from .swimmer import *
 from .quadruped import *
 from .reacher import *
 from .insert import *
-from .hcp_env import *
-from .fetch import *
