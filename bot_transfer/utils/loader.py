@@ -257,7 +257,6 @@ def load_from_name(path, best=False, load_env=True):
     if not path.startswith('/'):
         path = os.path.join(BASE, path)
     params = ModelParams.load(path)
-    params['time_limit'] = 25
     print("LOAD PATH", path)
     return load(path, params, best=best, load_env=load_env)
 
@@ -347,8 +346,6 @@ def create_high_level_finetune_params(low_name, high_name, env_name, k=None, t=N
 def compose_params(low_name, high_name, env_name=None, k=None, t=None):
     print("############# COMPOSING", low_name, high_name)
     high_params = ModelParams.load(high_name)
-    if high_params['seed']:
-        high_params['seed'] += 10
     low_params = ModelParams.load(low_name)        
     print("Low env args", low_params['env_args'])
     print("High env args", high_params['env_args'])
@@ -401,6 +398,8 @@ def compose_params(low_name, high_name, env_name=None, k=None, t=None):
         high_params['alg_args']['random_exploration'] = 0.0
     if 'include_contacts' in high_params['env_args']:
         del high_params['env_args']['include_contacts']
+    # NOTE: Turn off sampling goals for evaluations.
+    # In the paper this line nwas sometimes commented out for evaluation.
     if 'sample_goals' in high_params['env_args']:
         high_params['env_args']['sample_goals'] = False
 
