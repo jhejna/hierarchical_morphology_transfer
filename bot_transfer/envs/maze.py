@@ -651,7 +651,7 @@ class AntMaze(MazeMJ):
         return observation[-4:-2]
 
     def apply_action(self, action):
-        self.model.body_pos[15][:2] = self.low_level_goal
+        self.model.body_pos[-1][:2] = self.low_level_goal
         self.do_simulation(action, self.frame_skip)
 
     def low_level_is_done(self):
@@ -675,7 +675,7 @@ class AntMaze(MazeMJ):
         self.sim.reset()
         self.sample_goal_pos()
         qpos = self.np_random.uniform(size=self.model.nq, low=-.1, high=.1) + self.init_qpos
-        self.model.body_pos[14][:2] = self.center_goal
+        self.model.body_pos[-2][:2] = self.center_goal
         qvel = self.init_qvel + self.np_random.randn(self.model.nv) * .1
         self.set_mj_state(qpos, qvel)
 
