@@ -20,7 +20,7 @@ python scripts/train_model.py --env Ant_Low --alg SAC -t 2500000 --learning-rate
 ```
 2. Train High Level
 ```
-python scripts/train_model.py --env Ant_High --alg SAC -t 200000 --time-limit 50
+python scripts/train_model.py --env Ant_High --alg SAC -t 200000 --time-limit 50 --policy <path to model output folder>
 ```
 
 3. Train Low Level With Discirminative Imitation
@@ -30,7 +30,7 @@ python scripts/train_model.py --env Ant_Discriminator --alg DSAC -t 2500000 --le
                               --buffer-size 1000000 --delta-max 4.0 --time-limit 100 \
                               --discrim-learning-rate 0.0002 --discrim-stop 0.5 --discrim-decay true \
                               --discrim-online false --discrim-time-limit 32 \
-                              --policy <path to model output folder>
+                              --policy <path to model to imitate>
 ```
 Note that the default output location is `output/MM_DD_YY/env_alg_seed_num`
 
