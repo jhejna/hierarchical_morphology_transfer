@@ -1,6 +1,8 @@
 # Hierarchically Decoupled Imitation for Morphological Transfer
 Code for the paper [Hierarchically Decoupled Imitation for Morphological Transfer](https://arxiv.org/abs/2003.01709) by Donald (Joey) Hejna, Pieter Abbeel, and Lerrel Pinto.
 
+A newer, cleaner version of the code can be found [here](https://github.comjhejna/morphology-transfer), however it is untested nor benchmarked.
+
 ## Setup
 
 1. Install the required python dependencies using the requirements.txt file. Note that if you want to use GPU, you must swap tensorflow for tensorflow-gpu
