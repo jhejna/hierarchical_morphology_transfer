@@ -2,6 +2,6 @@ gym[all]==0.15.4
 tensorflow==1.14
 cffi
 stable-baselines[mpi]==2.9.0
-numpy==1.18.0
+numpy==1.22.0
 mujoco-py<2.0
 matplotlib
